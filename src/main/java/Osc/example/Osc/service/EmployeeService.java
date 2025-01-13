@@ -24,8 +24,10 @@ public class EmployeeService {
     @Autowired
     DepartmentRepository departmentrepository;
 
-//    @Autowired
-//    CheckRepository checkrepo;
+
+    //checking purpose
+  @Autowired
+    CheckRepository checkrepo;
 
 
 
@@ -61,14 +63,14 @@ public class EmployeeService {
         return "Department data added...";
     }
 
+//following below code for checking purpose(it has minimum fields & small table)
+    public List<CheckModel> getCheck() {
+       return  checkrepo.findAll();
+    }
 
-//    public List<CheckModel> getCheck() {
-//       return  checkrepo.findAll();
-//    }
-//
-//    public void postCheck(CheckModel checking) {
-//        checkrepo.save(checking);
-//    }
+    public void postCheck(CheckModel checking) {
+        checkrepo.save(checking);
+    }
 
 
 }

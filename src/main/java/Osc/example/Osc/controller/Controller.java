@@ -56,19 +56,19 @@ public class Controller {
 
 
 
+    //following below code for checking purpose(it has minimum fields & small table)
+    @GetMapping("/getcheck")
+    public List<CheckModel> getcheck()
+    {
+        return employeeservice.getCheck();
+    }
 
-//    @GetMapping("/getcheck")
-//    public List<CheckModel> getcheck()
-//    {
-//        return employeeservice.getCheck();
-//    }
-
-//    @PostMapping("/postcheck")
-//    public String postcheck(@RequestBody CheckModel checking)
-//    {
-//        employeeservice.postCheck(checking);
-//        System.out.println("checkingg" + checking.getGender());
-//        return "checked succesefully";
-//    }
+    @PostMapping("/postcheck")
+    public String postcheck(@RequestBody CheckModel checking)
+    {
+        employeeservice.postCheck(checking);
+        System.out.println("checkingg" + checking.getGender());
+        return "checked succesefully";
+    }
 
 }
