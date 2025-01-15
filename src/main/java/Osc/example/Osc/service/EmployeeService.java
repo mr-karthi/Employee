@@ -1,76 +1,37 @@
 package Osc.example.Osc.service;
 
-import Osc.example.Osc.model.CheckModel;
-import Osc.example.Osc.model.DepartmentModel;
-import Osc.example.Osc.model.EmployeeDemo;
-import Osc.example.Osc.repository.CheckRepository;
-import Osc.example.Osc.repository.DepartmentRepository;
-import Osc.example.Osc.repository.EmployeeDemoRepo;
+import Osc.example.Osc.model.EmployeeModel;
+import Osc.example.Osc.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
+
+//Employee service
 @Service
 public class EmployeeService {
 
 
-
     @Autowired
-    EmployeeDemoRepo employeerepository;
-
-    @Autowired
-    DepartmentRepository departmentrepository;
+    EmployeeRepository employeerepository;
 
 
-    //checking purpose
-  @Autowired
-    CheckRepository checkrepo;
-
-
-
-    //do servive for getEmployee here
-    public List<EmployeeDemo> getemployee()
+    //do service for get employee here
+    public List<EmployeeModel> getemp()
     {
 
-       return employeerepository.findAll();
+      return  employeerepository.findAll();
 
     }
 
 
-    //do service for postEmployee data here
-    public ResponseEntity<?> addemployee(EmployeeDemo employee)
+    //do service for post employee data here
+    public void postemp(EmployeeModel employees)
     {
-        employeerepository.save(employee);
-        return new ResponseEntity<>("ok", HttpStatus.CREATED);
-    }
 
-
-    //do service for getDepartment data here
-    public List<DepartmentModel> getdepartment()
-    {
-        return departmentrepository.findAll();
+        employeerepository.save(employees);
 
     }
-
-
-    //do service for addDepartment data here
-    public String addDepartment(DepartmentModel department)
-    {
-        departmentrepository.save(department);
-        return "Department data added...";
-    }
-
-//following below code for checking purpose(it has minimum fields & small table)
-    public List<CheckModel> getCheck() {
-       return  checkrepo.findAll();
-    }
-
-    public void postCheck(CheckModel checking) {
-        checkrepo.save(checking);
-    }
-
-
 }
