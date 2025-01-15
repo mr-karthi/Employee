@@ -10,21 +10,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "department_table")
-public class DepartmentModel {
+@Table(name = "project_table")
+public class ProjectModel {
     @Id
-    @Column(name = "deptId")
-    private Long deptId;
-    @Column(name = "deptName")
-    private String deptName;
-    @Column(name = "description")
-    private String description;
+    @Column(name = "projectId")
+    private  String projectId;
+    @Column(name = "projectName")
+    private  String projectName;
+    @Column(name = "projectType")
+    private  String projectType;
+    @Column(name = "clientId")
+    private  String clientId;
     @Column(name = "status")
     private String status;
     @Column(name = "createdOn")
@@ -35,5 +36,4 @@ public class DepartmentModel {
     private Timestamp updatedOn;
     @Column(name = "updatedBy")
     private String updatedBy;
-
 }

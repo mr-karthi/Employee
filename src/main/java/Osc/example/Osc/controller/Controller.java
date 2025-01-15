@@ -3,7 +3,7 @@ package Osc.example.Osc.controller;
 
 import Osc.example.Osc.model.CheckModel;
 import Osc.example.Osc.model.DepartmentModel;
-import Osc.example.Osc.model.EmployeeModel;
+import Osc.example.Osc.model.EmployeeDemo;
 import Osc.example.Osc.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class Controller {
 
     //getEmployee here
     @GetMapping("/getemployee")
-    public List<EmployeeModel> getEmployee()
+    public List<EmployeeDemo> getEmployee()
     {
         return employeeservice.getemployee();
     }
@@ -28,7 +28,7 @@ public class Controller {
     //add employee data here
 
     @PostMapping("/postemployee")
-    public String addEmployee(@RequestBody EmployeeModel employee)
+    public String addEmployee(@RequestBody EmployeeDemo employee)
     {
         System.out.println("data recived" + employee.getEmpName());
         System.out.println("Id recived" + employee.getEmpId());

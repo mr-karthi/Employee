@@ -1,6 +1,5 @@
 package Osc.example.Osc.model;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,23 +9,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "department_table")
-public class DepartmentModel {
+@Table(name = "client_table")
+public class ClientModel {
     @Id
-    @Column(name = "deptId")
-    private Long deptId;
-    @Column(name = "deptName")
-    private String deptName;
-    @Column(name = "description")
-    private String description;
-    @Column(name = "status")
-    private String status;
+    @Column(name = "clientId")
+    private  String clientId;
+    @Column(name = "clientName")
+    private  String clientName;
     @Column(name = "createdOn")
     private Timestamp createdOn;
     @Column(name = "createdBy")
@@ -35,5 +29,4 @@ public class DepartmentModel {
     private Timestamp updatedOn;
     @Column(name = "updatedBy")
     private String updatedBy;
-
 }

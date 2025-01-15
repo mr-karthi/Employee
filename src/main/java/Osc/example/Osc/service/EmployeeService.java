@@ -2,10 +2,10 @@ package Osc.example.Osc.service;
 
 import Osc.example.Osc.model.CheckModel;
 import Osc.example.Osc.model.DepartmentModel;
-import Osc.example.Osc.model.EmployeeModel;
+import Osc.example.Osc.model.EmployeeDemo;
 import Osc.example.Osc.repository.CheckRepository;
 import Osc.example.Osc.repository.DepartmentRepository;
-import Osc.example.Osc.repository.EmployeeRepository;
+import Osc.example.Osc.repository.EmployeeDemoRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +19,7 @@ public class EmployeeService {
 
 
     @Autowired
-    EmployeeRepository employeerepository;
+    EmployeeDemoRepo employeerepository;
 
     @Autowired
     DepartmentRepository departmentrepository;
@@ -32,7 +32,7 @@ public class EmployeeService {
 
 
     //do servive for getEmployee here
-    public List<EmployeeModel> getemployee()
+    public List<EmployeeDemo> getemployee()
     {
 
        return employeerepository.findAll();
@@ -41,7 +41,7 @@ public class EmployeeService {
 
 
     //do service for postEmployee data here
-    public ResponseEntity<?> addemployee(EmployeeModel employee)
+    public ResponseEntity<?> addemployee(EmployeeDemo employee)
     {
         employeerepository.save(employee);
         return new ResponseEntity<>("ok", HttpStatus.CREATED);
