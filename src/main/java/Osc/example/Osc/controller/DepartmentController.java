@@ -26,6 +26,8 @@ public class DepartmentController {
     }
 
 
+
+
     //post department data here
     @PostMapping("/postdepartment")
     public String postdepartments(@RequestBody DepartmentModel department)
@@ -33,6 +35,7 @@ public class DepartmentController {
         departmentservice.postdepartments(department);
         return  "Department posted";
     }
+
 
 
 }

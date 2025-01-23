@@ -1,10 +1,7 @@
 package Osc.example.Osc.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,5 +21,11 @@ public class CheckModel {
     private String name;
     @Column(name = "gender")
     private String gender;
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
 
+
+    public CheckModel(String filename, String contentType, byte[] bytes) {
+    }
 }

@@ -1,35 +1,31 @@
 package Osc.example.Osc.model;
 
-
-import Osc.example.Osc.ProjectStatus;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.sql.Timestamp;
 
-
-
-
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
 @Entity
-@Table(name = "project_table")
-public class ProjectModel {
-
+@Table(name = "sprintTable")
+public class SprintModel {
 
     @Id
+    @Column(name = "sprintId")
+    private  String sprintId;
+    @Column(name = "sprintName")
+    private  String sprintName;
+    @Column(name = "description")
+    private String description;
     @Column(name = "projectId")
-    private  String projectId;
-    @Column(name = "projectName")
-    private  String projectName;
-    @Column(name = "projectType")
-    private  String projectType;
-    @Column(name = "clientId")
-    private  String clientId;
+    private String projectId;
     @Column(name = "status")
     private String status;
     @Column(name = "createdOn")
