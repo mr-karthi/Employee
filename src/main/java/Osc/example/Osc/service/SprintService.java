@@ -19,24 +19,20 @@ public class SprintService {
 
 
 
-    public  List<SprintModel> sprintGet(String sprintId, String sprintName) {
-        if (sprintId != null && sprintName != null)
-        {
-          return  sprintRepository.findBySprintIdAndSprintName(sprintId,sprintName);
-        }
-        else if (sprintId != null)
-        {
+    public  List<SprintModel> sprintGet(String sprintId) {
+       try {
+           if (sprintId != null)
+           {
+               return sprintRepository.findBySprintId(sprintId);
+           }
 
-            return sprintRepository.findBySprintId(sprintId);
-        }
-        else if (sprintName != null)
-        {
+           else {
+               return sprintRepository.findAll();
+           }
+       } catch (Exception e) {
+           throw new RuntimeException(e);
+       }
 
-            return sprintRepository.findBySprintName(sprintName);
-        }
-        else {
-            return sprintRepository.findAll();
-        }
     }
 
 

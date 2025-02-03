@@ -5,23 +5,35 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.expression.spel.ast.Assign;
+
+
 import java.sql.Timestamp;
 import java.util.Date;
-
-
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "department_table")
-public class DepartmentModel {
+@Table(name = "taskTable")
+public class TaskModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "deptId")
-    private Long deptId;
-    @Column(name = "deptName")
-    private String deptName;
+    @Column(name = "taskId")
+    private String taskId;
+    @Column(name = "taskName")
+    private String taskName;
+    @Column(name = "sprintId")
+    private String sprintId;
+    @Column(name = "module")
+    private String module;
+    @Column(name = "layer")
+    private String layer;
+    @Column(name = "assignTo")
+    private String assignTo;
+    @Column(name = "eta")
+    private Date eta;
     @Column(name = "description")
     private String description;
     @Column(name = "status")

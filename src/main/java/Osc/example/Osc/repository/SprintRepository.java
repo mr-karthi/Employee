@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface SprintRepository extends JpaRepository<SprintModel, String> {
 
-    List<SprintModel> findBySprintIdAndSprintName(String sprintId, String sprintName);
+
     List<SprintModel> findBySprintId(String sprintId);
-    List<SprintModel> findBySprintName(String sprintName);
+
     List<SprintModel> findByStatus(String status);
 
     List<SprintModel> findByProjectIdAndStatus(String projectId, String status);

@@ -11,10 +11,12 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Responses {
+public class Responses
+{
         private String status;
         private String responseMessage;
         private List<?> data;
         private Object postData;
+        private String check;
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/department")
+@CrossOrigin(origins = "*")
 public class DepartmentController {
 
 

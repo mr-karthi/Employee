@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,28 +31,27 @@ public class ProjectService {
 
 
     //do service for get project here
-    public Page<ProjectModel> getproject(Pageable pageable , String projectId , String projectName)
+    public Page<ProjectModel> getproject(Pageable pageable , String projectId)
     {
-        System.out.println("the name:" +projectName);
-        System.out.println(" the id" + projectId);
-        if (projectId != null && projectName != null)
 
-        {
-            return projectrepository.findByProjectIdAndProjectName(projectId,projectName,pageable);
+        System.out.println("the id" + projectId);
+
+        try {
+
+            if (projectId != null)
+            {
+                return projectrepository.findByProjectId(projectId,pageable);
+            }
+            else
+            {
+
+                return projectrepository.findAll(pageable);
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        else if (projectId != null)
-        {
-            return projectrepository.findByProjectId(projectId,pageable);
-        }
-        else if (projectName !=null)
-        {
-            return projectrepository.findByProjectName(projectName,pageable);
-        }
-        else
-        {
-         
-            return projectrepository.findAll(pageable);
-        }
+
 
     }
 
@@ -62,12 +63,14 @@ public class ProjectService {
             Responses postResponse = new Responses();
 
              try {
+                 project.setCreatedBy("Admin");
+                 project.setCreatedOn(new Date());
                  ProjectModel postProject = projectrepository.save(project);
                  postResponse.setPostData(postProject);
                  postResponse.setStatus("success");
                  return new ResponseEntity<>(postResponse, HttpStatus.CREATED);
 
-             } catch (Exception e) {
+             } catch(Exception e) {
                  postResponse.setResponseMessage("Error occurred" + e.getMessage());
                  return new ResponseEntity<>(postResponse, HttpStatus.INTERNAL_SERVER_ERROR);
              }
@@ -81,10 +84,10 @@ public class ProjectService {
         try {
 
               List<ProjectModel> projectStatus = projectrepository.findByStatus(status);
-
               res.setData(projectStatus);
               res.setStatus("success");
-        } catch (Exception e) {
+        } catch(Exception e) {
+
             throw new RuntimeException(e);
         }
        return ResponseEntity.ok(res);
@@ -92,6 +95,13 @@ public class ProjectService {
 
 
 
+    public ResponseEntity<Responses> filterData(String projectName) {
+        Responses res = new Responses();
+       List<ProjectModel> checkData = projectrepository.filterCheck(projectName);
+
+        res.setData(checkData);
+        return ResponseEntity.ok(res);
+    }
 
 
 //    public ResponseEntity<Responses> get(String status){

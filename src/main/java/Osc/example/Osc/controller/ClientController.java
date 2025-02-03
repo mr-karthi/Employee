@@ -1,13 +1,16 @@
 package Osc.example.Osc.controller;
 import Osc.example.Osc.model.ClientModel;
+import Osc.example.Osc.model.Responses;
 import Osc.example.Osc.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/client")
 public class ClientController {
 
@@ -16,19 +19,18 @@ public class ClientController {
     ClientService clientservice;
 
 
-    //get client here
-    @GetMapping("/getclient")
-    public List<ClientModel> getclient()
-    {
-        return  clientservice.getclient();
-    }
 
+@GetMapping("/getclient")
+public ResponseEntity<Responses> getClient()
+{
+    return clientservice.getClient();
+}
 
     //post client data here
     @PostMapping("/postclient")
-    public String postclient(@RequestBody ClientModel client)
+    public ResponseEntity<Responses> post(@RequestBody ClientModel client)
     {
-        clientservice.postclient(client);
-        return  "client posted";
+      return   clientservice.clientPost(client);
+
     }
 }

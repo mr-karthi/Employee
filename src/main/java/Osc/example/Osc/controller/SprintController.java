@@ -28,10 +28,10 @@ public class SprintController {
 
 
     @GetMapping("/getSprint")
-    public List<SprintModel> getSprint(@RequestParam(required = false) String sprintId,
-                                       @RequestParam(required = false) String sprintName)
+    public List<SprintModel> getSprint(@RequestParam(required = false) String sprintId)
+//                                       @RequestParam(required = false) String sprintName)
     {
-       return sprintservice.sprintGet(sprintId, sprintName);
+       return sprintservice.sprintGet(sprintId);
     }
 
     @GetMapping("/sprintStatus")

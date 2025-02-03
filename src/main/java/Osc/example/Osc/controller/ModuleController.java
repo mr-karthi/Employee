@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/module")
+@CrossOrigin(origins = "*")
 public class ModuleController {
 
 

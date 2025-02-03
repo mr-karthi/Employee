@@ -1,15 +1,12 @@
 package Osc.example.Osc.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
-
+import java.util.Date;
 
 
 @AllArgsConstructor
@@ -19,18 +16,21 @@ import java.sql.Timestamp;
 @Table(name = "client_table")
 public class ClientModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "clientId")
     private  String clientId;
     @Column(name = "clientName")
     private  String clientName;
+    @Column(name = "description")
+    private  String description;
     @Column(name = "status")
     private String status;
     @Column(name = "createdOn")
-    private Timestamp createdOn;
+    private Date createdOn;
     @Column(name = "createdBy")
     private String createdBy;
     @Column(name = "updatedOn")
-    private Timestamp updatedOn;
+    private Date updatedOn;
     @Column(name = "updatedBy")
     private String updatedBy;
 }
